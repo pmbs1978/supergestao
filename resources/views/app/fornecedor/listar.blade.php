@@ -15,27 +15,27 @@
         </div>
         <div class="informacao-pagina">
             <div style="width: 90%; margin: 0 auto;">
-                <table>
+                <table class="table-s border-separate border-spacing-2">
                     <thead>
-                        <th>
+                        <th class="th-s">
                             Id
                         </th>
-                        <th>
+                        <th class="th-s">
                             Nome
                         </th>
-                        <th>
+                        <th class="th-s">
                             Site
                         </th>
-                        <th>
+                        <th class="th-s">
                             UF
                         </th>
-                        <th>
+                        <th class="th-s">
                             E-mail
                         </th>
-                        <th>
+                        <th class="th-s">
 
                         </th>
-                        <th>
+                        <th class="th-s">
 
                         </th>
                     </thead>
@@ -58,7 +58,7 @@
                                     {{ $fornecedor->email }}
                                 </td>
                                 <td>
-                                    <a href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">editar</a>
+                                    <a class="text-blue-600" href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">editar</a>
                                 </td>
                                 <td>
                                     excluir
@@ -67,9 +67,12 @@
                         @endforeach
                     </tbody>
                 </table>
+                    {{ $fornecedores->appends($request)->links() }}
+
 
             </div>
 
         </div>
     </div>
+
 @endsection

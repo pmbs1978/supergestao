@@ -19,48 +19,48 @@ h2 {
 }
 
 input, select, textarea, button {
-    width: 100%;
-    padding: 10px 15px;
-    margin: 10px 0px 10px 0px;
-    box-sizing: border-box;
-    border-radius: 3px;
-    background-color: transparent;
+    width: 100% !important;
+    padding: 10px 15px !important;
+    margin: 10px 0px 10px 0px !important;
+    box-sizing: border-box !important;
+    border-radius: 3px !important;
+    background-color: transparent !important;
     color: #333;
 }
 
 .texto-branco {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 .borda-branca {
-    border: solid 1px #fff;
+    border: solid 1px #fff !important;
 }
 
 .borda-preta {
-    border: solid 1px #333;
+    border: solid 1px #333 !important;
 }
 
 button {
-    background-color: #7ab829;
-    cursor: pointer;
-    color: #fff;
+    background-color: #7ab829 !important;
+    cursor: pointer !important;
+    color: #fff !important;
 }
 
 button:hover {
-    background-color: #6ea22c;
+    background-color: #6ea22c !important;
 }
 
 ::placeholder {
-    color: #333333;
-    opacity: 1;
+    color: #333333 !important;
+    opacity: 1 !important;
 }
 
 :-ms-input-placeholder {
-    color: #333333;
+    color: #333333 !important;
 }
 
 ::-ms-input-placeholder {
-    color: #333333;
+    color: #333333 !important;
 }
 
 .topo {
@@ -194,25 +194,17 @@ button:hover {
     margin: 0px 15px 0px 15px;
 }
 
-table {
+.table-s {
     width: 100%;
     border-spacing: 30px;
     /* border-collapse: collapse; */
 }
 
-th {
+.th-s {
     border: 1px solid blue;
     padding: 5px;
 }
 
-th:nth-child(6), th:nth-child(7) {
+.th-s:nth-child(6), th:nth-child(7) {
     border: none;
-}
-
-tr {
-    border: 1px solid blue;
-}
-
-tr:not(:last-child) {
-    border-bottom: 1px solid blue;
 }
