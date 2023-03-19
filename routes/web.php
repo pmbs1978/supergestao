@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Middleware\LogAcessoMiddleware;
+use \App\Http\Controllers\ProdutoController;
 
 // 1º metodo
 // use App\Http\Controllers\PrincipalController;
@@ -68,7 +69,8 @@ Route::middleware('autenticacao')->prefix('/app')->group(function () {
     Route::post('/fornecedor/adicionar', [App\Http\Controllers\FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
     Route::get('/fornecedor/editar/{id}/{msg?}', [App\Http\Controllers\FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
     Route::get('/fornecedor/apagar/{id}', [App\Http\Controllers\FornecedorController::class, 'apagar'])->name('app.fornecedor.apagar');
-    Route::get('/produto', [App\Http\Controllers\ProdutoController::class, 'index'])->name('app.produto');
+    Route::resource('produto', ProdutoController::class);
+    // Route::get('/produto', [App\Http\Controllers\ProdutoController::class, 'index'])->name('app.produto');
 });
 
 // rota de fallback
