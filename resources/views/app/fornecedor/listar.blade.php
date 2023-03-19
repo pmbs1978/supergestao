@@ -61,7 +61,7 @@
                                     <a class="text-blue-600" href="{{ route('app.fornecedor.editar', $fornecedor->id) }}">editar</a>
                                 </td>
                                 <td>
-                                    excluir
+                                    <a class="text-blue-600" href="{{ route('app.fornecedor.apagar', $fornecedor->id) }}">apagar</a>
                                 </td>
                             </tr>
                         @endforeach

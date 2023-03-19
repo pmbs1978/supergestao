@@ -84,4 +84,12 @@ class FornecedorController extends Controller
         $fornecedor = Fornecedor::find($id);
         return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg' => $msg]);
     }
+
+    public function apagar($id){
+        // implementando soft delete
+        Fornecedor::find($id)->delete();
+        //apagando por completo o registo
+        // Fornecedor::find($id)->forceDelete();
+        return redirect()->route('app.fornecedor');
+    }
 }
