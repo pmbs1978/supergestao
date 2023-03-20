@@ -38,6 +38,9 @@
                         <th class="th-s">
 
                         </th>
+                        <th class="th-s">
+
+                        </th>
                     </thead>
                     <tbody>
                         @foreach ($produtos as $produto)
@@ -58,16 +61,30 @@
                                     {{ $produto->unidade_id }}
                                 </td>
                                 <td>
-                                    <a class="text-blue-600" href="">editar</a>
+                                    <a class="text-blue-600"
+                                        href="{{ route('produto.show', ['produto' => $produto->id]) }}">visualizar</a>
                                 </td>
                                 <td>
-                                    <a class="text-blue-600" href="">apagar</a>
+                                    <a class="text-blue-600"
+                                        href="{{ route('produto.edit', ['produto' => $produto->id]) }}">editar</a>
+                                </td>
+                                <td>
+                                    <form id="form_{{ $produto->id }}"
+                                        action="{{ route('produto.destroy', ['produto' => $produto->id]) }}"
+                                        method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        {{-- <button type="submit">apagar</button> --}}
+                                        <a class="text-blue-600" href="#"
+                                            onclick="document.getElementById('form_{{ $produto->id }}').submit()">apagar</a>
+
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                    {{ $produtos->appends($request)->links() }}
+                {{ $produtos->appends($request)->links() }}
 
 
             </div>
