@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use App\Models\Unidade;
+use App\Models\ProdutoDetalhe;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -13,7 +14,16 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Produto::paginate(3);
+        $produtos = Produto::paginate(5);
+
+        foreach($produtos as $key => $produto){
+            $detalhe = ProdutoDetalhe::where('produto_id', $produto->id)->get();
+            // dd($produto);
+            echo '<br><br><br>';
+            dd($detalhe->get('id'));
+            echo '<br><br><br>';
+        }
+
         return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
 
@@ -24,6 +34,7 @@ class ProdutoController extends Controller
     {
         $unidades = Unidade::all();
         return view('app.produto.create', ['unidades' => $unidades]);
+        // return view('app.produto.create-edit', ['unidades' => $unidades]);
     }
 
     /**
@@ -92,6 +103,7 @@ class ProdutoController extends Controller
     {
         $unidades = Unidade::all();
         return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
+        // return view('app.produto.create-edit', ['produto' => $produto, 'unidades' => $unidades]);
     }
 
     /**

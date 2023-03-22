@@ -5,11 +5,11 @@
 @section('conteudo')
     <div class="conteudo-pagina">
         <div class="titulo-pagina-2">
-            <p>Produto - Listar</p>
+            <p>Produto detalhe - Listar</p>
         </div>
         <div class="menu">
             <ul>
-                <li><a href="{{ route('produto.create') }}">Novo</a></li>
+                <li><a href="{{ route('produto-detalhe.create') }}">Novo</a></li>
                 <li><a href="">Consulta</a></li>
             </ul>
         </div>
@@ -21,22 +21,16 @@
                             Id
                         </th>
                         <th class="th-s">
-                            Nome
-                        </th>
-                        <th class="th-s">
-                            Descrição
-                        </th>
-                        <th class="th-s">
-                            Peso
+                            Produto
                         </th>
                         <th class="th-s">
                             Comprimento
                         </th>
                         <th class="th-s">
-                            Altura
+                            Largura
                         </th>
                         <th class="th-s">
-                            Largura
+                            Altura
                         </th>
                         <th class="th-s">
                             Unidade
@@ -52,49 +46,43 @@
                         </th>
                     </thead>
                     <tbody>
-                        @foreach ($produtos as $produto)
+                        @foreach ($produtoDetalhes as $produtoDetalhe)
                             <tr>
                                 <td>
-                                    {{ $produto->id }}
+                                    {{ $produtoDetalhe->id }}
                                 </td>
                                 <td>
-                                    {{ $produto->nome }}
+                                    {{ $produtoDetalhe->produto_id }}
                                 </td>
                                 <td>
-                                    {{ $produto->descricao }}
+                                    {{ $produtoDetalhe->comprimento }}
                                 </td>
                                 <td>
-                                    {{ $produto->peso }}
+                                    {{ $produtoDetalhe->largura }}
                                 </td>
                                 <td>
-                                    {{ $produto->unidade_id }}
+                                    {{ $produtoDetalhe->altura }}
                                 </td>
                                 <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    
+                                    {{ $produtoDetalhe->unidade_id }}
                                 </td>
                                 <td>
                                     <a class="text-blue-600"
-                                        href="{{ route('produto.show', ['produto' => $produto->id]) }}">visualizar</a>
+                                        href="{{ route('produto-detalhe.show', ['produto_detalhe' => $produtoDetalhe->id]) }}">visualizar</a>
                                 </td>
                                 <td>
                                     <a class="text-blue-600"
-                                        href="{{ route('produto.edit', ['produto' => $produto->id]) }}">editar</a>
+                                        href="{{ route('produto-detalhe.edit', ['produto_detalhe' => $produtoDetalhe->id]) }}">editar</a>
                                 </td>
                                 <td>
-                                    <form id="form_{{ $produto->id }}"
-                                        action="{{ route('produto.destroy', ['produto' => $produto->id]) }}"
+                                    <form id="form_{{ $produtoDetalhe->id }}"
+                                        action="{{ route('produto-detalhe.destroy', ['produto_detalhe' => $produtoDetalhe->id]) }}"
                                         method="POST">
                                         @method('DELETE')
                                         @csrf
                                         {{-- <button type="submit">apagar</button> --}}
                                         <a class="text-blue-600" href="#"
-                                            onclick="document.getElementById('form_{{ $produto->id }}').submit()">apagar</a>
+                                            onclick="document.getElementById('form_{{ $produtoDetalhe->id }}').submit()">apagar</a>
 
                                     </form>
                                 </td>
@@ -102,7 +90,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $produtos->appends($request)->links() }}
+                {{ $produtoDetalhes->appends($request)->links() }}
 
 
             </div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Middleware\LogAcessoMiddleware;
 use \App\Http\Controllers\ProdutoController;
+use \App\Http\Controllers\ProdutoDetalheController;
 
 // 1º metodo
 // use App\Http\Controllers\PrincipalController;
@@ -70,6 +71,7 @@ Route::middleware('autenticacao')->prefix('/app')->group(function () {
     Route::get('/fornecedor/editar/{id}/{msg?}', [App\Http\Controllers\FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
     Route::get('/fornecedor/apagar/{id}', [App\Http\Controllers\FornecedorController::class, 'apagar'])->name('app.fornecedor.apagar');
     Route::resource('produto', ProdutoController::class);
+    Route::resource('produto-detalhe', ProdutoDetalheController::class);
     // Route::get('/produto', [App\Http\Controllers\ProdutoController::class, 'index'])->name('app.produto');
 });
 

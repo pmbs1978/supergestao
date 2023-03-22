@@ -15,7 +15,7 @@
         </div>
         <div class="informacao-pagina">
             <div style="width: 30%; margin: 0 auto;">
-                <form action="{{ route('produto.update', ['produto' => $produto->id]) }}" method="POST">
+                {{-- <form action="{{ route('produto.update', ['produto' => $produto->id]) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="id" value="$produto->id">
@@ -39,7 +39,9 @@
                     </select>
                     {{ $errors->has('unidade_id') ? $errors->first('unidade_id') : '' }}
                     <button type="submit" class="borda-preta">Alterar</button>
-                </form>
+                </form> --}}
+                @component('app.produto._components.form_create_edit', ['produto' => $produto, 'unidades' => $unidades])
+                @endcomponent
             </div>
 
         </div>
