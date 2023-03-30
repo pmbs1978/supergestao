@@ -13,7 +13,7 @@ return new class extends Migration
     {
         // criando coluna motivo_contactos_id
         Schema::table('site_contactos', function (Blueprint $table) {
-            $table->unsignedbigInteger('motivo_contactos_id'); // A chave estrangeira tem de ter o mesmo tipo de dados da chave primária
+            $table->unsignedbigInteger('motivo_contactos_id')->default('1'); // A chave estrangeira tem de ter o mesmo tipo de dados da chave primária
         });
 
         // copiando a coluna motivo_contactos para a nova coluna

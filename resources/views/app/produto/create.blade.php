@@ -33,7 +33,7 @@
                     {{ $errors->has('unidade_id') ? $errors->first('unidade_id') : '' }}
                     <button type="submit" class="borda-preta">{{ isset($produto) ? 'Alterar' : 'Registar'}}</button>
                 </form> --}}
-            @component('app.produto._components.form_create_edit', ['unidades' => $unidades])
+            @component('app.produto._components.form_create_edit', ['unidades' => $unidades, 'fornecedores' => $fornecedores])
 
             @endcomponent
             </div>

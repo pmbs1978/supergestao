@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Middleware\LogAcessoMiddleware;
 use \App\Http\Controllers\ProdutoController;
 use \App\Http\Controllers\ProdutoDetalheController;
+use \App\Http\Controllers\ClienteController;
+use \App\Http\Controllers\PedidoController;
+use \App\Http\Controllers\PedidoProdutoController;
 
 // 1º metodo
 // use App\Http\Controllers\PrincipalController;
@@ -62,7 +65,6 @@ Route::middleware('autenticacao')->get('/logout', function(){})->name('logout');
 Route::middleware('autenticacao')->prefix('/app')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('app.home');
     Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('app.logout');
-    Route::get('/cliente', [App\Http\Controllers\ClienteController::class, 'index'])->name('app.cliente');
     Route::get('/fornecedor', [App\Http\Controllers\FornecedorController::class, 'index'])->name('app.fornecedor');
     Route::get('/fornecedor/listar', [App\Http\Controllers\FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
     Route::post('/fornecedor/listar', [App\Http\Controllers\FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
@@ -73,6 +75,9 @@ Route::middleware('autenticacao')->prefix('/app')->group(function () {
     Route::resource('produto', ProdutoController::class);
     Route::resource('produto-detalhe', ProdutoDetalheController::class);
     // Route::get('/produto', [App\Http\Controllers\ProdutoController::class, 'index'])->name('app.produto');
+    Route::resource('cliente', ClienteController::class);
+    Route::resource('pedido', PedidoController::class);
+    Route::resource('pedido-produto', PedidoProdutoController::class);
 });
 
 // rota de fallback

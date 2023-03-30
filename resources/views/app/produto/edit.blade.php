@@ -40,7 +40,7 @@
                     {{ $errors->has('unidade_id') ? $errors->first('unidade_id') : '' }}
                     <button type="submit" class="borda-preta">Alterar</button>
                 </form> --}}
-                @component('app.produto._components.form_create_edit', ['produto' => $produto, 'unidades' => $unidades])
+                @component('app.produto._components.form_create_edit', ['produto' => $produto, 'unidades' => $unidades, 'fornecedores' => $fornecedores])
                 @endcomponent
             </div>
 

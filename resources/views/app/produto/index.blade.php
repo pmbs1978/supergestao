@@ -15,6 +15,7 @@
         </div>
         <div class="informacao-pagina">
             <div style="width: 90%; margin: 0 auto;">
+                {{-- {{ $produtos->toJson() }} --}}
                 <table class="table-s border-separate border-spacing-2">
                     <thead>
                         <th class="th-s">
@@ -25,6 +26,12 @@
                         </th>
                         <th class="th-s">
                             Descrição
+                        </th>
+                        <th class="th-s">
+                            Nome Fornecedor
+                        </th>
+                        <th class="th-s">
+                            Site Fornecedor
                         </th>
                         <th class="th-s">
                             Peso
@@ -64,19 +71,34 @@
                                     {{ $produto->descricao }}
                                 </td>
                                 <td>
+                                    {{ $produto->fornecedor->nome ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $produto->fornecedor->site ?? '' }}
+                                </td>
+                                <td>
                                     {{ $produto->peso }}
+                                </td>
+                                {{-- <td>
+                                    {{ $produto->produtoDetalhe->comprimento ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $produto->produtoDetalhe->altura ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $produto->produtoDetalhe->largura ?? '' }}
+                                </td> --}}
+                                <td>
+                                    {{ $produto->itemDetalhe->comprimento ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $produto->itemDetalhe->altura ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $produto->itemDetalhe->largura ?? '' }}
                                 </td>
                                 <td>
                                     {{ $produto->unidade_id }}
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    
                                 </td>
                                 <td>
                                     <a class="text-blue-600"
@@ -103,6 +125,8 @@
                     </tbody>
                 </table>
                 {{ $produtos->appends($request)->links() }}
+                <hr>
+                {{-- {{ $produtos->toJson() }} --}}
 
 
             </div>

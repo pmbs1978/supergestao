@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProdutoDetalhe;
+use App\Models\ItemDetalhe;
 use App\Models\Unidade;
 use App\Models\Produto;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class ProdutoDetalheController extends Controller
      */
     public function index(Request $request)
     {
-        $produtoDetalhes = ProdutoDetalhe::paginate(5);
+        // $produtoDetalhes = ProdutoDetalhe::paginate(5);
+        $produtoDetalhes = ItemDetalhe::paginate(5);
         return view('app.produto_detalhe.index', ['produtoDetalhes' => $produtoDetalhes, 'request' => $request->all()]);
     }
 
@@ -34,7 +36,7 @@ class ProdutoDetalheController extends Controller
     public function store(Request $request)
     {
         ProdutoDetalhe::create($request->all());
-        return 'Gravação feita com sucesso';
+        return redirect()->route('produto-detalhe.create');
     }
 
     /**
@@ -52,6 +54,7 @@ class ProdutoDetalheController extends Controller
     {
         $produtos = Produto::all();
         $unidades = Unidade::all();
+        $produtoDetalhe = $produtoDetalhe->with(['produto'])->first();
         return view('app.produto_detalhe.edit', compact('produtoDetalhe', 'produtos', 'unidades'));
     }
 

@@ -13,6 +13,7 @@
                 <li><a href="{{ route('app.fornecedor') }}">Consulta</a></li>
             </ul>
         </div>
+        {{-- {{ $fornecedores->toJson() }} --}}
         <div class="informacao-pagina">
             <div style="width: 90%; margin: 0 auto;">
                 <table class="table-s border-separate border-spacing-2">
@@ -62,6 +63,35 @@
                                 </td>
                                 <td>
                                     <a class="text-blue-600" href="{{ route('app.fornecedor.apagar', $fornecedor->id) }}">apagar</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <p>Lista produtos</p>
+                                    <table style="border: 1px solid black">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    ID
+                                                </th>
+                                                <th>
+                                                    Nome produto
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($fornecedor->produtos as $key => $produto)
+                                                <tr>
+                                                    <td>
+                                                        {{ $produto->id }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $produto->nome }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </td>
                             </tr>
                         @endforeach

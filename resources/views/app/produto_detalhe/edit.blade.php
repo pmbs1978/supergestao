@@ -14,6 +14,12 @@
             </ul>
         </div>
         <div class="informacao-pagina">
+            {{ $produtoDetalhe->toJson() }}
+            <h4>Produto</h4>
+            <div>Nome: {{ $produtoDetalhe->produto->nome ?? ''}}</div>
+            <br>
+            <div>Descrição: {{ $produtoDetalhe->produto->descricao ?? ''}}</div>
+            {{ $produtoDetalhe->toJson() }}
             <div style="width: 30%; margin: 0 auto;">
                 @component('app.produto_detalhe._components.form_create_edit', ['produtoDetalhe' => $produtoDetalhe, 'produtos' => $produtos, 'unidades' => $unidades])
                 @endcomponent
