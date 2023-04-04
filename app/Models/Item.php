@@ -19,4 +19,8 @@ class Item extends Model
         // return $this->belongsTo('App\Models\Fornecedor', 'fornecedor_id', 'id');
         return $this->belongsTo('App\Models\Fornecedor'); // como o nome dos campos estão no nome padrão podem ser omitidos
     }
+
+    public function pedidos(){
+        return $this->belongsToMany('App\Models\Pedido', 'pedido_produtos', 'produto_id', 'pedido_id');
+    }
 }

@@ -14,4 +14,5 @@ class ItemDetalhe extends Model
     public function produto(){
         return $this->belongsTo('App\Models\Item', 'produto_id', 'id');
     }
+
 }
